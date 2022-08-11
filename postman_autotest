@@ -1,0 +1,13 @@
+//autotest for method https://api.hh.ru/employers?text=яндекс+практикум
+
+pm.test("Статус 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Время ответа менее 400ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(400);
+});
+
+pm.test("Body matches string Яндекс.Практикум", function () {
+    pm.expect(pm.response.text()).to.include("Яндекс.Практикум");
+});
